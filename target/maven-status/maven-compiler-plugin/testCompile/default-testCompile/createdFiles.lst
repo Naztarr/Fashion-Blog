@@ -1,0 +1,4 @@
+com/naz/fashionBlog/service/serviceImplementation/UserServiceImplementationTest.class
+com/naz/fashionBlog/controller/UserControllerTest.class
+com/naz/fashionBlog/FashionBlogApplicationTests.class
+com/naz/fashionBlog/repository/UserRepositoryTest.class

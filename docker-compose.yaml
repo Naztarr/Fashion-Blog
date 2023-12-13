@@ -1,0 +1,28 @@
+version: '3.1'
+services:
+  db:
+    container_name: postgresql-container
+    restart: always
+    image: postgres:latest
+    ports:
+      - "5433:5432"
+    environment:
+      - POSTGRES_DB=fashion-blog
+      - POSTGRES_PASSWORD=idealnaz
+      - POSTGRES_USER=postgres
+    volumes:
+      - /Users/mac/Documents/blog_container:/var/lib/postgresql/data
+
+  backend:
+    build: .
+    container_name: blog_container
+    image: blog_app
+    ports:
+      - "8087:8888"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/fashion-blog
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=idealnaz
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=create
+    depends_on:
+      - db
